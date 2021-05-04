@@ -1,0 +1,108 @@
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="border">
+        <button class="btn btn-md btn-outline-primary" (click)="open(content)">
+            <i class="fa fa-user"></i>New student</button>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Middlename</th>
+                <th>Lastname</th>
+                <th>Address</th>
+                <th>Birthdate</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let friend of friends">
+                <td><span>{{friend.Id}}</span></td>
+                <td><span>{{friend.f_name}}</span></td>
+                <td><span>{{friend.m_name}}</span></td>
+                <td><span>{{friend.l_name}}</span></td>
+                <td><span>{{friend.address}}</span></td>
+                <td><span>{{friend.birthdate}}</span></td>
+                <td><span>{{friend.score}}</span></td>
+                <td>
+                    <button class="btn btn-sm btn-info">
+                        <em id="ic1" class="fa fa-search"></em>
+                        Details
+                    </button>
+                    <button class="btn btn-sm btn-warning">
+                        <em id="ic2" class="fa fa-edit"></em>
+                        Edit
+                    </button>
+                    <button class="btn btn-sm btn-danger">
+                        <em id="ic3" class="fa fa-remove"></em>
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">New Friend</h4>
+        <button type="button" class="close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <div class="form-group">
+                <label for="f_name">
+                    Firstname
+                </label>
+                <input type="text" id="f_name" class="form-control" 
+                [(ngModel)]= "friends.f_name" name="f_name">
+            </div>
+            <div class="form-group">
+                <label for="m_name">
+                    Middlename
+                </label>
+                <input type="text" id="m_name" class="form-control" 
+                [(ngModel)]= "friends.m_name" name="m_name">
+            </div>
+            <div class="form-group">
+                <label for="l_name">
+                    Lastname
+                </label>
+                <input type="text" id="l_name" class="form-control" 
+                [(ngModel)]= "friends.l_name" name="l_name">
+            </div>
+            <div class="form-group">
+                <label for="address">
+                    Address
+                </label>
+                <input type="text" id="address" class="form-control" 
+                [(ngModel)]= "friends.address" name="address">
+            </div>
+            <div class="form-group">
+                <label for="birthDate">
+                    BirthDate
+                </label>
+                <input type="text" id="birthdate" class="form-control" 
+                [(ngModel)]= "friends.birthdate" name="birthdate">
+            </div>
+            <div class="form-group">
+                <label for="score">
+                    Score
+                </label>
+                <input type="text" id="score" class="form-control" 
+                [(ngModel)]= "friends.score" name="score">
+            </div>
+            <div class="border text-center">
+                <button data-dismiss="modal" class="btn btn-info">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+</ng-template>
